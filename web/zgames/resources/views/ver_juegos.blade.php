@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Hola soy ver juegos
-</body>
-</html>
+@extends("layouts.master")
+
+@section("contenido")
+  <h1>Hola esto es ver juegos</h1>
+@endsection

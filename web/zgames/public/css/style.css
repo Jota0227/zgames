@@ -1,4 +1,5 @@
 .logo{
+    /* Para imagenes responsivas se define solo una dimension*/
     height: 50px;
     width: auto;
 }
