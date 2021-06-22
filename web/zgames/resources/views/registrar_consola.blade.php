@@ -14,12 +14,8 @@
           </div>
           <div class="mb-3">
             <label for="marca-select" class="form-label">Marca</label>
-            <select class="form-select" id="marca-select">
-              <option value="microsoft">Microsoft</option>
-              <option value="sony">Sony</option>
-              <option value="nintendo">Nintendo</option>
-              <option value="sega">Sega</option>
-            </select>
+              <select class="form-select" id="marca-select">
+              </select>
           </div>
           <div class="mb-3">
             <label for="anio-txt" class="form-label">Año de lanzamiento</label>
@@ -32,4 +28,7 @@
       </div>
     </div>
   </div>
+@endsection
+@section('javascript')
+    <script src="{{asset('js/home.js')}}"></script>
 @endsection
