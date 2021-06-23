@@ -17,5 +17,9 @@ use App\Http\Controllers\ConsolasController; //Para usar controlador se importa 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-//Routte::get("url", [controlador::class, "metodo"]);
+//Routte::get("url", [controlador::class, "metodo"]);    Puede ser post para enviar cosas o get para obtener cosas de la bd
 Route::get("marcas/get", [ConsolasController::class, "getMarcas"]);
+
+Route::get("consolas/get", [ConsolasController::class, "getConsolas"]);
+
+Route::get("consolas/post", [ConsolasController::class,"crearConsola"]);
