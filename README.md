@@ -25,7 +25,7 @@
 
 ## 2.1 Para crear controladores (dentro del contenedor):         
 ´´
-    php artisan make:controller NombreController
+    php artisan make:controller NombreController     (el nombre debe ser el plural de el modelo)
 ´´
 ### 3. BASE DE DATOS
 
@@ -51,3 +51,5 @@
     -Las vistas (views, deben estar en esa carpeta) son elementos estaticos para no tener que copiar y pegar codigo, pueden tener url (para que no se vea "feo") que venga de un php (rutas/routes) o de un controlador
 
     -Hay recursos estaticos (archivos js, archivos css, imagenes) que son archivos cargados dinamicamente desde la web y deben estar en la carpeta public, todo lo cargado de public debe ser con src="{{asset('ubicacion')}}"
+
+    -Para cada entidad se debe crear un modelo (php artisan make:model Nombre), un controlador que puede ser crear, obtener, eliminar, actualizar (php artisan make controller NombresController) y un servicio (NombresService.js)
