@@ -15,6 +15,7 @@ class CrearTablaConsolas extends Migration
     {   //Modelo orientado a objetos: base de datos relacional+programacion orientada a objetos (mysql+eloquen)(crea clases para que se cree sola la tabla)
         Schema::create('consolas', function (Blueprint $table) {
             $table->id();  //secuencias, autoincrementales (son claves unicas generadas automaticamente por el motor)
+            $table->string("nombre",150);
             $table->string("marca",50);
             $table->integer("anio");
             $table->timestamps();                                    // dos campos que agraga laravel create_at y el updated_at

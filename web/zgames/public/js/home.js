@@ -12,8 +12,10 @@ const cargarMarcas = async()=>{
         marcaSelect.appendChild(option);
     })
 }
-cargarMarcas();
-
+// ESTO BASICAMENTE OPTIMIZA EL FUNCIONAMIENTO
+document.addEventListener("DOMContentLoaded", ()=>{ //Esto ejecuta un codigo asegurandose que el total de la pagina incluidos los recursos esten cargados antes de ejecutar
+    cargarMarcas();
+});
 document.querySelector("#registrar-btn").addEventListener("click", async ()=>{
     let nombre=document.querySelector("#nombre-txt").value;
     let marca=document.querySelector("#marca-select").value;
@@ -25,5 +27,9 @@ document.querySelector("#registrar-btn").addEventListener("click", async ()=>{
     //TO DO falta validar!!
     let res = await crearConsola(consola); // Esta pura linea va al controlador y le pasa los datos, el controlador crea el modelo, el modelo ingresa en la base de datos (res se puede reemplazar por cualquier nombre)
     //Mostrar un mensaje de exito con sweet alert
-    Swal.fire("Consola Creada", "Consola creada exitosamente", "info");
+    await Swal.fire("Consola Creada", "Consola creada exitosamente", "info");
+    //Con await implica que la linea que viene dsp de swal.fire se va a ejecutar solo cuando la persona aprete ok
+    window.location.href = "ver_consolas";  //Con window se refiere a la ventana entera del navegador, location sirve para rescatar datos de la pagina (interna o externa) y con href se pueden ver o modificar los datos de la url de la pagina
+    //Para entenderlo se puede leer como la ubicacion de la ventana actual
+
 });
