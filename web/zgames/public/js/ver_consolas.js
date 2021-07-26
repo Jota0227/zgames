@@ -1,6 +1,28 @@
+const iniciarEliminacion = async function(){
+    //Obtener el id a eliminar
+    let id = this.idConsola; //this. da el boton donde se llamo la funcion y de ahi se obtine el id
+    let resp = await Swal.fire({tittle:"Esta seguro?", text:"Esta operacion es irreversible", icon:"error", showCancelButton:true});
+    if(resp.isConfirmed){
+        Swal.fire("La persona quiere eliminar");
+        //Eliminar
+        if(await eliminarConsola(id)){
+            //Si la eliminacion fue exitosa, recargar la tabla
+            let consolas = await getConsolas();
+            cargarTabla(consolas);
+            Swal.fire("Consola eliminda","Consola eliminada exitosamente","info");
+        }else{
+            //Si no funciona, mostrar un mensaje de error
+            Swal.fire("Error","No se pudo atender la solicitud","error");
+        }
+    }else{
+        Swal.fire("Cancelado","cancelado por el usuario", "info");
+    }
+};
+
 const cargarTabla = (consolas)=>{
     //obtener referencia al cuerpo de la tabla
     let tbody = document.querySelector("#tbody-consola");
+    tbody.innerHTML = "";
     //recorrer todas las consolas   
     for(let i=0; i<consolas.length; ++i){
         //por cada consola generar una fila
@@ -17,6 +39,7 @@ const cargarTabla = (consolas)=>{
         botonEliminar.innerText = "Eliminar";
         botonEliminar.classList.add("btn","btn-danger");
         botonEliminar.idConsola = consolas[i].id; //la idea de esto es asociar un boton a la id de una consola, asi al borrar
+        botonEliminar.addEventListener("click", iniciarEliminacion);
         tdAcciones.appendChild(botonEliminar);
         //agregar los td al tr
         tr.appendChild(tdNombre);

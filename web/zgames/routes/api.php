@@ -16,3 +16,5 @@ Route::get("consolas/get", [ConsolasController::class, "getConsolas"]);
 Route::post("consolas/post", [ConsolasController::class,"crearConsola"]);
 
 //POR CADA ENTIDAD GENERADA SE TENDRA QUE GENERAR UN MODELO, UN CONTROLADOR Y UN SERVICIO
+
+Route::post("consolas/delete",[ConsolasController::class,"eliminarConsola"]);

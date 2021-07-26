@@ -18,3 +18,16 @@ const crearConsola = async(consola)=>{  // el "=>" es una manera de crear una fu
     });
     return resp.data; //data es la propiedad de axios que trae los datos que manda php
 };
+
+const eliminarConsola = async(id)=>{
+    try{                                                                                //Se tiene que hacer la comprobacion en java igual
+        let resp = await axios.post("api/consolas/delete", {id}, {
+            headers:{
+                "Content-Type": "application/json"
+            }
+        });
+        return resp.data=="ok";                                                        //Aqui se comprueba que la respuesta sea o no ok a que existan las tablas
+    }catch(e){
+        return false;
+    }
+}

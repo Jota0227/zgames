@@ -42,6 +42,13 @@
 ## 3.3 Para crear un modelo (archivo que permite efectuar operaciones con la base de datos)
 ´´
     php artisan make:model Nombre                 (Nombre siempre en singular)
+
+´´
+
+## 3.4 Para crear un lugar para probar codigo php
+´´
+    php artisan tinker      (se hace en attash shell del programa en docker)
+
 ´´
 
 ## INFORMACION
