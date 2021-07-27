@@ -25,6 +25,13 @@ class ConsolasController extends Controller
         return $consolas;
     }
 
+    public function filtrarConsolas(Request $request){         //esto es equivalente a un select * from consolas where marca = $filtro
+        $input = $request->all();
+        $filtro = $input["filtro"];
+        $consolas = Consola::where("marca", $filtro)->get();
+        return $consolas;
+    }
+
     // Esta funcion va a registrar una consola de ejemplo en la bd
     // Una request es un objeto  php que permite acceder a las cosas que me mandaron desde la interfaz
     // Cuando el metodo recibe cosas el request va en los parantesis
@@ -52,3 +59,5 @@ class ConsolasController extends Controller
     }
 
 }
+
+//SIEMPRE QUE SE AGREGA UNA FUNCION EN EL CONTROLLER SE TIENE QUE AGREGAR LUEGO EN EL API

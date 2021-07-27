@@ -2,9 +2,14 @@
 //IMPORTANTE ESTE ARCHIVO SE PUEDE USAR PARA OTROS PROYCTOS PORQUE LA ESTRUCTURA ES SIEMPRE LA MISMA, SOLO CAMBIAN LOS NOMBRES
 
 //getConsolas
-const getConsolas = async ()=>{
-    let resp = await axios.get("api/consolas/get");  //esto traera la lista que esta en la base de datos
-    return resp.data
+const getConsolas = async (filtro="todos")=>{
+    let resp;
+    if(filtro=="todos"){
+        resp = await axios.get("api/consolas/get"); //esto traera la lista que esta en la base de datos, que por defecto sera todos, porque se indico arriba
+    }else{
+        resp = await axios.get(`api/consolas/filtrar?filtro=${filtro}`); // cuando no este en todo por defecto, llamara a api/consolas/filtrar y le va a pasar el filtro que se le pasa
+    }
+    return resp.data;
 };
 
 //creaConsolas

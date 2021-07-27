@@ -13,6 +13,8 @@ Route::get("marcas/get", [ConsolasController::class, "getMarcas"]);
 
 Route::get("consolas/get", [ConsolasController::class, "getConsolas"]);
 
+Route::get("consolas/filtrar", [ConsolasController::class, "filtrarConsolas"]);
+
 Route::post("consolas/post", [ConsolasController::class,"crearConsola"]);
 
 //POR CADA ENTIDAD GENERADA SE TENDRA QUE GENERAR UN MODELO, UN CONTROLADOR Y UN SERVICIO

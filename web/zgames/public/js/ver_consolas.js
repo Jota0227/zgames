@@ -1,9 +1,21 @@
+const cargarMarcas = async ()=>{
+    //ir a buscar el filtro-cbx
+    let filtroCbx = document.querySelector("#filtro-cbx");
+    //ir a buscar las marcas
+    let marcas = await getMarcas();
+    marcas.forEach(m=>{                                         //Dentro de este for se asigna una opcion al filtro por cada marca
+        let option = document.createElement("option");
+        option.innerText = m;
+        option.value = m;
+        filtroCbx.appendChild(option);   
+    });
+};
+
 const iniciarEliminacion = async function(){
     //Obtener el id a eliminar
     let id = this.idConsola; //this. da el boton donde se llamo la funcion y de ahi se obtine el id
     let resp = await Swal.fire({tittle:"Esta seguro?", text:"Esta operacion es irreversible", icon:"error", showCancelButton:true});
     if(resp.isConfirmed){
-        Swal.fire("La persona quiere eliminar");
         //Eliminar
         if(await eliminarConsola(id)){
             //Si la eliminacion fue exitosa, recargar la tabla
@@ -52,8 +64,15 @@ const cargarTabla = (consolas)=>{
    
 };
 
+document.querySelector("#filtro-cbx").addEventListener("change", async ()=>{      // el click se ejecuta siempre que se haga click independiente si hace cambio o no, con change solo ejecuta cuando cambia el valor
+    let filtro = document.querySelector("#filtro-cbx").value;
+    let consolas = await getConsolas(filtro);
+    cargarTabla(consolas);
+});
+
 document.addEventListener("DOMContentLoaded", async ()=>{
     //Aqui se carga la tabla de consolas, porque si al entrar aqui se asegura que se esta ejecutando cuando la pagina este completamente cargada
+    await cargarMarcas();
     let consolas = await getConsolas();
     cargarTabla(consolas);
 });
